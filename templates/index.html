@@ -1,0 +1,733 @@
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi"
+    >
+    <title>ZYAN - Personal Portfolio HTML Template</title>
+    <link rel="icon" type="image/png" href={% static "images/favicon.png" %}>
+    <link rel="stylesheet" href={% static "css/font-awesome-pro.css" %}>
+    <link rel="stylesheet" href={% static "css/bootstrap.min.css" %}>
+    <link rel="stylesheet" href={% static "css/scroll_button.css" %}>
+    <link rel="stylesheet" href={% static "css/plugin.css" %}>
+    <link rel="stylesheet" href={% static "css/spacing.css" %}>
+    <link rel="stylesheet" href={% static "css/style.css" %}>
+    <link rel="stylesheet" href={% static "css/responsive.css" %}>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <style>
+        .img-fluid {
+            width: 60% !important;
+        }
+    </style>
+</head>
+
+<body>
+<!--================================
+    PRELOADER START
+=================================-->
+<div class="preloader">
+    <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path id="" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+    </svg>
+    <h5 class="preloader-text">{% trans "Yükleniyor" %}</h5>
+</div>
+<!--================================
+    PRELOADER END
+=================================-->
+<!--================================
+    MENU START
+=================================-->
+<nav class="navbar navbar-expand-lg main_menu">
+    <div class="container main_menu_bg">
+        <a class="navbar-brand" href="index.html">
+            <img src="{{ site_settings.logo.url }}" alt="ZYAN" class="img-fluid w-100">
+        </a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <i class="fa-sharp fa-regular fa-bars bar_icon"></i>
+            <i class="fa-regular fa-xmark close_icon"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav m-auto">
+                {% for menu in header_menu %}
+                    <li class="nav-item">
+                        <a class="nav-link text_hover_animaiton active" href="#">
+                            {{ menu.text }}
+                        </a>
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--================================
+    MENU END
+=================================-->
+
+<!--================================
+    BANNER START
+=================================-->
+<section
+        class="tf__banner banner"
+        style="background: "
+>
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-xl-6 col-lg-8">
+                <div class="tf__banner_text">
+                    <h1>
+                        {{ main_page.slayt_text }}
+                        <span class="cd-headline rotate-1">
+                  <!-- ANIMATE TEXT VALUES: zoom, rotate-1, letters type, letters rotate-2, loading-bar, slide, clip, letters rotate-3, letters scale, push,  -->
+                  <span class="cd-words-wrapper">
+                    <b class="is-visible">ŞENGÜN</b>
+                    <b>İstanbul</b>
+                    <b>Yazılım Öğreniyorum</b>
+                  </span>
+                </span>
+                    </h1>
+                    {{ main_page.slayt_content|safe }}
+                    <ul>
+                        <li>
+                            <a class="common_btn" href="#"
+                            >İndir Cv <i class="fa-solid fa-arrow-down-to-line"></i
+                            ></a>
+                        </li>
+                        <li>
+                            <a
+                                    class="banner_video_btn play_btn"
+                                    href="https://www.youtube.com/watch?v=B-ytMSuwbf8"
+                            ><i class="fa-sharp fa-solid fa-circle-play"></i> Kendimi Tanıttığım Video</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-4">
+                <div class="tf__banner_img">
+                    <div class="img">
+                        <img
+                                src="{{ main_page.slayt_image.url }}"
+                                alt="ZYAN"
+                                class="img-fluid w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================================
+    BANNER END
+=================================-->
+<!--================================
+    SERVICE START
+=================================-->
+<section class="tf__service pt_130 xs_pt_80" id="service">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-9 m-auto">
+                <div class="tf__section_heading mb_40">
+                    <h5 class="has-animation">HİZMETLERİM</h5>
+                    <h2 class="has-animation">
+                        Aracılığıyla Hikayeler Oluşturmak, <br>
+                        Tasarım ve Yenilik
+                    </h2>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            {% for service in services %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="tf__single_service fade_left" data-trigerId="service">
+                <span>
+                    <img src="{{ service.logo.url }}" alt="{{ service.name }}" class="svg w-100">
+                </span>
+                        <h3>{{ service.name|safe }}</h3>
+                        <p>{{ service.description|safe }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+    </div>
+</section>
+<!--================================
+    SERVICE END
+=================================-->
+
+<!--================================
+    DESIGN START
+=================================-->
+<section class="tf__design mt_135 xs_mt_40 mb_120 xs_mb_80" id="counter">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6">
+                <div class="tf__design_text">
+                    <h2>Tasarım <span>ve İnovasyon</span></h2>
+                    <p class="">
+                        Türkçeye Yenilik olarak geçen İnnovation, bir değişim sürecini çağrıştırıyor
+                        olsada ona sadece Değişim veya Yenilik demek haksızlık olacaktır.
+                        İnovasyon hammaddesi bilgi ve yaratıcılık olan , iyileştiren, güçlendiren ve
+                        rekabet şansını arttıran sistematik bir “Yenilik Tasarım Sürecidir”
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-md-6">
+                        <div
+                                class="tf__design_counter fade_left"
+                                data-trigerId="counter"
+                        >
+
+                            <h3><span class="counter">10</span>k+</h3>
+                            <p>Proje Tamamla</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                        <div
+                                class="tf__design_counter fade_left"
+                                data-trigerId="counter"
+                        >
+
+                            <h3><span class="counter">800</span>+</h3>
+                            <p>Müşteri İncelemesi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="tf__design_form">
+                    <h2 class="has-animation">Buraya Dokun</h2>
+                    <p class="">
+                        Siteniz için onarımlarda tasarım tavsiyesi alarak her şeyi yapacağız
+                        ve bakım Biz tercih edilenlerdeniz.
+                    </p>
+                    <form action="#">
+                        <input class="" type="text" placeholder="İsim">
+                        <input class="" type="email" placeholder="Email">
+                        <input class="" type="text" placeholder="Tel No">
+                        <textarea class="" rows="4" placeholder="Mesaj"></textarea>
+                        <button type="submit" class="common_btn">Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================================
+    DESIGN END
+=================================-->
+
+<!--================================
+    SKILLS START
+=================================-->
+<section class="tf__skills pt_115 xs_pt_75 pb_70 xs_pb_30" id="skills">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 col-lg-8 m-auto mb_60">
+                <div class="tf__section_heading mb_40">
+                    <h5 class="has-animation">Eğitim ve Beceri</h5>
+                    <h2 class="has-animation">
+                        Yeteneğinizi sergiliyoruz <br>
+                        etkinizi güçlendirmek için
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6">
+                <div
+                        class="tf__single_skills fade_bottom"
+                        data-trigerId="skills"
+                        data-stagger=".13"
+                >
+                    <span>2014 - 2018</span>
+                    <h3>Wordpress ve Son Geliştirici</h3>
+                    <p>
+                        Çünkü hiç kimse zevki küçümsemez ya da nefret etmez çünkü o zevktir
+                        ya da kaçar ama bunlar, gidenler için büyük acılar doğurur.
+                        zevk yüzünden
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div
+                        class="tf__single_skills fade_bottom"
+                        data-trigerId="skills"
+                        data-stagger=".25"
+                >
+                    <span>2012 - 2014</span>
+                    <h3>Python Geliştiricisi</h3>
+                    <p>
+                        Python Geliştiricisi, Python programlama dili kullanarak yazılım geliştirme
+                        işlemlerini gerçekleştiren bir profesyoneldir. Veri analizi, yapay zeka,
+                        web uygulamaları ve otomasyon gibi birçok alanda çalışabilir.
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div
+                        class="tf__single_skills fade_bottom"
+                        data-trigerId="skills"
+                        data-stagger=".25"
+                >
+                    <span>2005 - 2009</span>
+                    <h3>Kent Eyalet Üniversitesi</h3>
+                    <p>
+                        Üniversiteye gitmedim
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div
+                        class="tf__single_skills fade_bottom"
+                        data-trigerId="skills"
+                        data-stagger=".25"
+                >
+                    <span>2009 - 2012</span>
+                    <h3>Kullanıcı deneyimi tasarımı</h3>
+                    <p>
+                        Son zamanlarda adını sıkça duyduğumuz bu kavram en basit tanımıyla,
+                        bir ürün veya hizmetin kullanılabilirliğinin ölçümünü ele alan süreçlerin
+                        analizi ve tasarımıdır. Bu analiz ve tasarımı yapan kişilere ise kullanıcı
+                        deneyimi tasarımcısı ( UX Designer) adı verilir.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6">
+                <div
+                        class="tf__team_skills_bar_single fade_bottom"
+                        data-trigerId="skills"
+                        data-stagger=".25"
+                >
+                    <p>HTML</p>
+                    <div id="bar1" class="barfiller">
+                        <div class="tipWrap">
+                            <span class="tip"></span>
+                        </div>
+                        <span class="fill" data-percentage="75"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div
+                        class="tf__team_skills_bar_single fade_bottom"
+                        data-trigerId="skills"
+                        data-stagger=".25"
+                >
+                    <p>Python</p>
+                    <div id="bar2" class="barfiller">
+                        <div class="tipWrap">
+                            <span class="tip"></span>
+                        </div>
+                        <span class="fill" data-percentage="90"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div
+                        class="tf__team_skills_bar_single fade_bottom"
+                        data-trigerId="skills"
+                        data-stagger=".25"
+                >
+                    <p>CSS</p>
+                    <div id="bar3" class="barfiller">
+                        <div class="tipWrap">
+                            <span class="tip"></span>
+                        </div>
+                        <span class="fill" data-percentage="80"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div
+                        class="tf__team_skills_bar_single fade_bottom"
+                        data-trigerId="skills"
+                        data-stagger=".25"
+                >
+                    <p>Photoshop</p>
+                    <div id="bar4" class="barfiller">
+                        <div class="tipWrap">
+                            <span class="tip"></span>
+                        </div>
+                        <span class="fill" data-percentage="70"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div
+                        class="tf__team_skills_bar_single fade_bottom"
+                        data-trigerId="skills"
+                        data-stagger=".25"
+                >
+                    <p>Java Script</p>
+                    <div id="bar5" class="barfiller">
+                        <div class="tipWrap">
+                            <span class="tip"></span>
+                        </div>
+                        <span class="fill" data-percentage="70"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div
+                        class="tf__team_skills_bar_single fade_bottom"
+                        data-trigerId="skills"
+                        data-stagger=".25"
+                >
+                    <p>Figma</p>
+                    <div id="bar6" class="barfiller">
+                        <div class="tipWrap">
+                            <span class="tip"></span>
+                        </div>
+                        <span class="fill" data-percentage="80"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================================
+    SKILLS END
+=================================-->
+
+<!--================================
+    PORTFOLIO START
+=================================-->
+<section class="tf__portfolio mt_120 xs_mt_80" id="projects">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 col-lg-9 mb_30">
+                <div class="tf__section_heading">
+                    <h5 class="has-animation">son portföyüm</h5>
+                    <h2 class="has-animation">
+                        Markanızı yeniliğe taşıyın <br>
+                        portföy uzmanlığımızla zirvelere
+                    </h2>
+                </div>
+            </div>
+    </div>
+</section>
+<!--================================
+    PORTFOLIO END
+=================================-->
+
+<!--================================
+    TESTIMONIAL START
+=================================-->
+<section class="tf__testimonial pt_115 xs_pt_75">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 m-auto mb_30">
+                <div class="tf__section_heading">
+                    <h5 class="has-animation">müşteri incelemesi</h5>
+                    <h2 class="has-animation">Referansım</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row testi_slider">
+            <div class="col-xl-6">
+                <div class="tf__single_testimonial">
+
+                    <p class="rating">
+                        <i class="fa-solid fa-star-sharp"></i>
+                        <i class="fa-solid fa-star-sharp"></i>
+                        <i class="fa-solid fa-star-sharp"></i>
+                        <i class="fa-solid fa-star-sharp"></i>
+                        <i class="fa-solid fa-star-sharp"></i>
+                    </p>
+                    <h3>Eleanor pena</h3>
+                    <h5>Pazarlama Koordinatörü</h5>
+                    <p class="description">
+                        Finansal planlamacılar insanların nasıl finansal destek alabilecekleri konusunda bilgi sahibi olmalarına yardımcı olur.
+                        yatırım yapın ve tasarruf edin en etkili yol arife planı
+                        İnsanlar insanların nasıl olduğu konusunda bilgi sahibi olmalarına yardımcı oluyor.
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="tf__single_testimonial">
+                    <div class="img">
+                        <img
+                                src="images/testimonial/2.jpg"
+                                alt="clients"
+                                class="img-fluid w-100">
+                    </div>
+                    <p class="rating">
+                        <i class="fa-solid fa-star-sharp"></i>
+                        <i class="fa-solid fa-star-sharp"></i>
+                        <i class="fa-solid fa-star-sharp"></i>
+                        <i class="fa-solid fa-star-sharp"></i>
+                        <i class="fa-solid fa-star-sharp"></i>
+                    </p>
+                    <h3>Eleanor pena</h3>
+                    <h5>Pazarlama Koordinatörü</h5>
+                    <p class="description">
+                        Finansal planlamacılar insanların nasıl finansal destek alabilecekleri konusunda bilgi sahibi olmalarına yardımcı olur.
+                        yatırım yapın ve tasarruf edin en etkili yol arife planı
+                        İnsanlar insanların nasıl olduğu konusunda bilgi sahibi olmalarına yardımcı oluyor.
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="tf__single_testimonial">
+                    <div class="img">
+                        <img
+                                src="images/testimonial/1.jpg"
+                                alt="clients"
+                                class="img-fluid w-100">
+                    </div>
+                    <p class="rating">
+                        <i class="fa-solid fa-star-sharp"></i>
+                        <i class="fa-solid fa-star-sharp"></i>
+                        <i class="fa-solid fa-star-sharp"></i>
+                        <i class="fa-solid fa-star-sharp"></i>
+                        <i class="fa-solid fa-star-sharp"></i>
+                    </p>
+                    <h3>Eleanor pena</h3>
+                    <h5>Pazarlama Koordinatörü</h5>
+                    <p class="description">
+                        Finansal planlamacılar insanların nasıl finansal destek alabilecekleri konusunda bilgi sahibi olmalarına yardımcı olur.
+                        yatırım yapın ve tasarruf edin en etkili yol arife planı
+                        İnsanlar insanların nasıl olduğu konusunda bilgi sahibi olmalarına yardımcı oluyor.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================================
+    TESTIMONIAL END
+=================================-->
+
+<!--================================
+    BRAND START
+=================================-->
+<div class="tf__brand mt_120 xs_mt_80">
+    <div class="row">
+        <div class="col-12">
+            <div class="marquee_animi">
+                <ul>
+                    <li>* Recep</li>
+                    <li>* ŞENGÜN</li>
+                    <li>* İSTANBUL</li>
+                    <li>* Yazılım</li>
+                    <li>* Öğreniyor</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--================================
+    BRAND END
+=================================-->
+
+<!--================================
+    BLOG START
+=================================-->
+<section class="tf__blog pt_125 xs_pt_75 pb_40 xs_pb_0" id="blogs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-9 mb_30">
+                <div class="tf__section_heading">
+                    <h5 class="has-animation">Bloğum</h5>
+                    <h2 class="has-animation">
+                        Kişisel markanızın potansiyelinin kilidini açmak
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-4 col-md-6">
+                <div class="tf__slingle_blog fade_left" data-trigerId="blogs">
+                    <a
+                            href="blog_details.html"
+                            class="tf__blog_img"
+                            data-cursor="read <br> more"
+                    >
+                    </a>
+                    <div class="tf__blog_text">
+                        <span>31 December,2022</span>
+                        <ul>
+                            <li>
+                                <i class="fa-sharp fa-solid fa-circle-user"></i> By admin
+                            </li>
+                            <li>
+                                <i class="fa-sharp fa-solid fa-comments"></i> Comments (05)
+                            </li>
+                        </ul>
+                        <a href="blog_details.html"
+                        >Standart kişisel Portfolyom</a
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="tf__slingle_blog fade_left" data-trigerId="blogs">
+                    <a
+                            href="blog_details.html"
+                            class="tf__blog_img"
+                            data-cursor="read <br> more"
+                    >
+                    </a>
+                    <div class="tf__blog_text">
+                        <span>31 December,2022</span>
+                        <ul>
+                            <li>
+                                <i class="fa-sharp fa-solid fa-circle-user"></i> By admin
+                            </li>
+                            <li>
+                                <i class="fa-sharp fa-solid fa-comments"></i> Comments (05)
+                            </li>
+                        </ul>
+                        <a href="blog_details.html"
+                        >Standart kişisel Portfolyom</a
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="tf__slingle_blog fade_left" data-trigerId="blogs">
+                    <a
+                            href="blog_details.html"
+                            class="tf__blog_img"
+                            data-cursor="read <br> more"
+                    >
+                    </a>
+                    <div class="tf__blog_text">
+                        <span>31 December,2022</span>
+                        <ul>
+                            <li>
+                                <i class="fa-sharp fa-solid fa-circle-user"></i> By admin
+                            </li>
+                            <li>
+                                <i class="fa-sharp fa-solid fa-comments"></i> Comments (05)
+                            </li>
+                        </ul>
+                        <a href="blog_details.html"
+                        >Standart kişisel Portfolyom</a
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <a href="blog_list.html" class="common_btn">Daha Fazla Blog +</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================================
+    BLOG END
+=================================-->
+<!--================================
+    SUBSCRIBE START
+=================================-->
+<div class="tf__subscribe" style="background: url(images/bg/subscribe.jpg)">
+    <div class="tf__subscribe_overlay pt_115 xs_pt_75 pb_120 xs_pb_80">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-8 col-md-10 m-auto">
+                    <div class="tf__subscribe_text">
+                        <h3 class="has-animation">BÜLTENİME ABONE OLUN</h3>
+                        <form action="#" class="">
+                            <input type="text" placeholder="Email">
+                            <button type="submit" class="common_btn">Şimdi Bildir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--================================
+SUBSCRIBE END
+=================================-->
+
+<!--================================
+    FOOTER START
+=================================-->
+<footer class="footer" id="footer">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tf__footer_copyright">
+                            <p>© CodeeFly 2023 | Her hakkı saklıdır</p>
+                            <ul>
+                                <li>
+                                    <a href="#" class="text_hover_animaiton"
+                                    >Tramvaylar ve Durum</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="#" class="text_hover_animaiton"
+                                    >Gizlilik Politikası</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="#" class="text_hover_animaiton">Site haritası</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+</footer>
+<!--================================
+FOOTER END
+=================================-->
+<!--================================
+    SCROLL BUTTON START
+=================================-->
+<div class="progress active c-pointer">
+    <svg
+            class="progress-svg"
+            width="100%"
+            height="100%"
+            viewBox="-1 -1 102 102"
+    >
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+    </svg>
+</div>
+<!--================================
+    SCROLL BUTTON END
+=================================-->
+
+<!--================================
+    CURSOR START
+=================================-->
+<div id="magic-cursor">
+    <div id="ball"></div>
+</div>
+<!--================================
+    CURSOR END
+=================================-->
+
+<script src={% static "js/plugin.js" %}></script>
+<!--scroll button js-->
+<script src={% static "js/scroll_button.js" %}></script>
+<!--sticky sidebar js-->
+<script src={% static "js/sticky_sidebar.js" %}></script>
+<!-- Animation -->
+<script src={% static "js/animation.js" %}></script>
+<!--main/custom js-->
+<script src={% static "js/main.js" %}></script>
+</body>
+</html>

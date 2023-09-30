@@ -1,0 +1,29 @@
+<html>
+<head>
+
+</head>
+<body>
+
+<form action="{% url 'account_login' %}" method="post">
+    {% csrf_token %}
+    <div>
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+    {% for error_field, error_message in form.errors.items %}
+        {% if forloop.last %}
+            {{ error_message|striptags }}
+        {% endif %}
+    {% endfor %}
+    </div>
+    <input type="text" name="login" required placeholder="Kullanıcı Adı">
+    <input type="password" name="password" required placeholder="Şifre">
+    <button type="submit">Oturum Aç</button>
+    <a href="{% url 'account_signup' %}">Üye Ol</a>
+
+</form>
+
+</body>
+</html>
