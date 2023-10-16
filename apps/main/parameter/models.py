@@ -13,7 +13,8 @@ class Settings(models.Model):
 
 
 class Menu(models.Model):
-    text = models.CharField(blank=True, max_length=200, verbose_name="Site Başlığı", null=True)
+    text = models.CharField(blank=True, max_length=200, verbose_name="Menü Başlığı", null=True)
+    url = models.CharField(blank=True, max_length=200, verbose_name="Url", null=True)
     alignment = models.IntegerField(null=True, blank=True, verbose_name="Sıralama")
 
     def __str__(self):

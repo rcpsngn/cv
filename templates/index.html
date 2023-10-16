@@ -63,7 +63,7 @@
             <ul class="navbar-nav m-auto">
                 {% for menu in header_menu %}
                     <li class="nav-item">
-                        <a class="nav-link text_hover_animaiton active" href="#">
+                        <a class="nav-link text_hover_animaiton active" href="{{ menu.url }}">
                             {{ menu.text }}
                         </a>
                     </li>
@@ -218,11 +218,12 @@
                         Siteniz için onarımlarda tasarım tavsiyesi alarak her şeyi yapacağız
                         ve bakım Biz tercih edilenlerdeniz.
                     </p>
-                    <form action="#">
-                        <input class="" type="text" placeholder="İsim">
-                        <input class="" type="email" placeholder="Email">
-                        <input class="" type="text" placeholder="Tel No">
-                        <textarea class="" rows="4" placeholder="Mesaj"></textarea>
+                    <form action="{% url "contact:contact" %}" method="post" >
+                        {% csrf_token %}
+                        <input class="" type="text" placeholder="İsim" name="name">
+                        <input class="" type="email" placeholder="Email" name="email">
+                        <input class="" type="text" placeholder="Tel No" name="tel">
+                        <textarea class="" rows="4" placeholder="Mesaj" name="message"></textarea>
                         <button type="submit" class="common_btn">Gönder</button>
                     </form>
                 </div>
@@ -729,5 +730,38 @@ FOOTER END
 <script src={% static "js/animation.js" %}></script>
 <!--main/custom js-->
 <script src={% static "js/main.js" %}></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% if messages %}
+    {% for message in messages %}
+        {% if forloop.last %}
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: '{{ message.tags }}',
+                    title: '{{ message|safe }}',
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% for error_field, error_message in form.errors.items %}
+    {% if forloop.lasr %}
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: '{{ error_message|striptags }}',
+                showConfirmButton: false,
+                timer: 2500
+            })
+        </script>
+    {% endif %}
+{% endfor %}
+
+
 </body>
 </html>
