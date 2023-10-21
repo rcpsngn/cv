@@ -1,4 +1,4 @@
-from apps.main.contact.models import Contact
+from apps.main.contact.models import Contact, Subscribe
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.utils.translation import gettext_lazy as _
@@ -16,6 +16,23 @@ def contact(request):
             tel=tel,
             email=email,
             message=message,
+        )
+        if control:
+            messages.success(request, _("İşlem Başarılı"))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        else:
+            messages.success(request, _("Teknik Bir Hata Oluştu"))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    messages.warning(request, _("Gönderilen İstek Geçersiz"))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+def subscribe(request):
+    if request.POST:
+        email = request.POST.get('email')
+
+        control = Subscribe.objects.create(
+            email=email,
         )
         if control:
             messages.success(request, _("İşlem Başarılı"))

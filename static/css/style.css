@@ -2759,7 +2759,7 @@ h5.preloader-text {
   }
 }
 h5.preloader-text::after {
-  content: "Loading";
+  content: "Yükleniyor";
   position: absolute;
   left: 0;
   top: 0;

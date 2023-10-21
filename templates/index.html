@@ -641,16 +641,17 @@
 <!--================================
     SUBSCRIBE START
 =================================-->
-<div class="tf__subscribe" style="background: url(images/bg/subscribe.jpg)">
+<div class="tf__subscribe" style="background: url({% static "images/bg/subscribe.jpg" %})">
     <div class="tf__subscribe_overlay pt_115 xs_pt_75 pb_120 xs_pb_80">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-8 col-md-10 m-auto">
                     <div class="tf__subscribe_text">
-                        <h3 class="has-animation">BÜLTENİME ABONE OLUN</h3>
-                        <form action="#" class="">
-                            <input type="text" placeholder="Email">
-                            <button type="submit" class="common_btn">Şimdi Bildir</button>
+                        <h3 class="has-animation">{% trans "BÜLTENİME ABONE OLUN" %}</h3>
+                        <form action="{% url "contact:subscribe" %}" method="post">
+                        {% csrf_token %}
+                            <input type="email" name="email" placeholder="{% trans "E Posta" %}">
+                            <button type="submit" class="common_btn">{% trans "ABONE OL" %}</button>
                         </form>
                     </div>
                 </div>

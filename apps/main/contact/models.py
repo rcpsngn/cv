@@ -10,3 +10,9 @@ class Contact(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+class Subscribe(models.Model):
+    email = models.EmailField()
+
+    def __str__(self):
+        return str(self.email)
