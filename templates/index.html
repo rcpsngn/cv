@@ -1,86 +1,11 @@
+{% extends "base.html" %}
+
 {% load i18n %}
 {% load static %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi"
-    >
-    <title>ZYAN - Personal Portfolio HTML Templates</title>
-    <link rel="icon" type="image/png" href={% static "images/favicon.png" %}>
-    <link rel="stylesheet" href={% static "css/font-awesome-pro.css" %}>
-    <link rel="stylesheet" href={% static "css/bootstrap.min.css" %}>
-    <link rel="stylesheet" href={% static "css/scroll_button.css" %}>
-    <link rel="stylesheet" href={% static "css/plugin.css" %}>
-    <link rel="stylesheet" href={% static "css/spacing.css" %}>
-    <link rel="stylesheet" href={% static "css/style.css" %}>
-    <link rel="stylesheet" href={% static "css/responsive.css" %}>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-    <style>
-        .img-fluid {
-            width: 60% !important;
-        }
-    </style>
-</head>
 
-<body>
-<!--================================
-    PRELOADER START
-=================================-->
-<div class="preloader">
-    <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <path id="" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
-    </svg>
-    <h5 class="preloader-text">{% trans "Yükleniyor" %}</h5>
-</div>
-<!--================================
-    PRELOADER END
-=================================-->
-<!--================================
-    MENU START
-=================================-->
-<nav class="navbar navbar-expand-lg main_menu">
-    <div class="container main_menu_bg">
-        <a class="navbar-brand" href="index.html">
-            <img src="{{ site_settings.logo.url }}" alt="ZYAN" class="img-fluid w-100">
-        </a>
-        <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-        >
-            <i class="fa-sharp fa-regular fa-bars bar_icon"></i>
-            <i class="fa-regular fa-xmark close_icon"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav m-auto">
-                {% for menu in header_menu %}
-                    <li class="nav-item">
-                        <a class="nav-link text_hover_animaiton active" href="{{ menu.url }}">
-                            {{ menu.text }}
-                        </a>
-                    </li>
-                {% endfor %}
 
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<!--================================
-    MENU END
-=================================-->
-
-<!--================================
-    BANNER START
-=================================-->
+{% block content %}
 <section
         class="tf__banner banner"
         style="background: "
@@ -130,12 +55,6 @@
         </div>
     </div>
 </section>
-<!--================================
-    BANNER END
-=================================-->
-<!--================================
-    SERVICE START
-=================================-->
 <section class="tf__service pt_130 xs_pt_80" id="service">
     <div class="container">
 
@@ -168,13 +87,6 @@
 
     </div>
 </section>
-<!--================================
-    SERVICE END
-=================================-->
-
-<!--================================
-    DESIGN START
-=================================-->
 <section class="tf__design mt_135 xs_mt_40 mb_120 xs_mb_80" id="counter">
     <div class="container">
         <div class="row">
@@ -218,7 +130,7 @@
                         Siteniz için onarımlarda tasarım tavsiyesi alarak her şeyi yapacağız
                         ve bakım Biz tercih edilenlerdeniz.
                     </p>
-                    <form action="{% url "contact:contact" %}" method="post" >
+                    <form action="{% url "contact:contact" %}" method="post">
                         {% csrf_token %}
                         <input class="" type="text" placeholder="İsim" name="name">
                         <input class="" type="email" placeholder="Email" name="email">
@@ -231,13 +143,6 @@
         </div>
     </div>
 </section>
-<!--================================
-    DESIGN END
-=================================-->
-
-<!--================================
-    SKILLS START
-=================================-->
 <section class="tf__skills pt_115 xs_pt_75 pb_70 xs_pb_30" id="skills">
     <div class="container">
         <div class="row">
@@ -252,167 +157,45 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-6 col-lg-6">
-                <div
-                        class="tf__single_skills fade_bottom"
-                        data-trigerId="skills"
-                        data-stagger=".13"
-                >
-                    <span>2014 - 2018</span>
-                    <h3>Wordpress ve Son Geliştirici</h3>
-                    <p>
-                        Çünkü hiç kimse zevki küçümsemez ya da nefret etmez çünkü o zevktir
-                        ya da kaçar ama bunlar, gidenler için büyük acılar doğurur.
-                        zevk yüzünden
-                    </p>
+            {% for career in career_list %}
+                <div class="col-xl-6 col-lg-6">
+                    <div
+                            class="tf__single_skills fade_bottom"
+                            data-trigerId="skills"
+                            data-stagger=".13"
+                    >
+                        <span>{{ career.start_year }} - {{ career.finish_year }}</span>
+                        <h3>{{ career.text }}</h3>
+                        <p>{{ career.content }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div
-                        class="tf__single_skills fade_bottom"
-                        data-trigerId="skills"
-                        data-stagger=".25"
-                >
-                    <span>2012 - 2014</span>
-                    <h3>Python Geliştiricisi</h3>
-                    <p>
-                        Python Geliştiricisi, Python programlama dili kullanarak yazılım geliştirme
-                        işlemlerini gerçekleştiren bir profesyoneldir. Veri analizi, yapay zeka,
-                        web uygulamaları ve otomasyon gibi birçok alanda çalışabilir.
-                    </p>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div
-                        class="tf__single_skills fade_bottom"
-                        data-trigerId="skills"
-                        data-stagger=".25"
-                >
-                    <span>2005 - 2009</span>
-                    <h3>Kent Eyalet Üniversitesi</h3>
-                    <p>
-                        Üniversiteye gitmedim
-                    </p>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div
-                        class="tf__single_skills fade_bottom"
-                        data-trigerId="skills"
-                        data-stagger=".25"
-                >
-                    <span>2009 - 2012</span>
-                    <h3>Kullanıcı deneyimi tasarımı</h3>
-                    <p>
-                        Son zamanlarda adını sıkça duyduğumuz bu kavram en basit tanımıyla,
-                        bir ürün veya hizmetin kullanılabilirliğinin ölçümünü ele alan süreçlerin
-                        analizi ve tasarımıdır. Bu analiz ve tasarımı yapan kişilere ise kullanıcı
-                        deneyimi tasarımcısı ( UX Designer) adı verilir.
-                    </p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         <div class="row">
-            <div class="col-xl-6 col-lg-6">
-                <div
-                        class="tf__team_skills_bar_single fade_bottom"
-                        data-trigerId="skills"
-                        data-stagger=".25"
-                >
-                    <p>HTML</p>
-                    <div id="bar1" class="barfiller">
-                        <div class="tipWrap">
-                            <span class="tip"></span>
+
+            {% for skill in skill_list %}
+                <div class="col-xl-6 col-lg-6">
+
+                    <div
+                            class="tf__team_skills_bar_single fade_bottom"
+                            data-trigerId="skills"
+                            data-stagger=".25"
+                    >
+                        <p>{{ skill.text }}</p>
+                        <div class="barfiller">
+                            <div class="tipWrap">
+                                <span class="tip"></span>
+                            </div>
+                            <span class="fill" data-percentage="{{ skill.count }}"
+                                  style="width: {{ skill.count }}%;"></span>
                         </div>
-                        <span class="fill" data-percentage="75"></span>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div
-                        class="tf__team_skills_bar_single fade_bottom"
-                        data-trigerId="skills"
-                        data-stagger=".25"
-                >
-                    <p>Python</p>
-                    <div id="bar2" class="barfiller">
-                        <div class="tipWrap">
-                            <span class="tip"></span>
-                        </div>
-                        <span class="fill" data-percentage="90"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div
-                        class="tf__team_skills_bar_single fade_bottom"
-                        data-trigerId="skills"
-                        data-stagger=".25"
-                >
-                    <p>CSS</p>
-                    <div id="bar3" class="barfiller">
-                        <div class="tipWrap">
-                            <span class="tip"></span>
-                        </div>
-                        <span class="fill" data-percentage="80"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div
-                        class="tf__team_skills_bar_single fade_bottom"
-                        data-trigerId="skills"
-                        data-stagger=".25"
-                >
-                    <p>Photoshop</p>
-                    <div id="bar4" class="barfiller">
-                        <div class="tipWrap">
-                            <span class="tip"></span>
-                        </div>
-                        <span class="fill" data-percentage="70"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div
-                        class="tf__team_skills_bar_single fade_bottom"
-                        data-trigerId="skills"
-                        data-stagger=".25"
-                >
-                    <p>Java Script</p>
-                    <div id="bar5" class="barfiller">
-                        <div class="tipWrap">
-                            <span class="tip"></span>
-                        </div>
-                        <span class="fill" data-percentage="70"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div
-                        class="tf__team_skills_bar_single fade_bottom"
-                        data-trigerId="skills"
-                        data-stagger=".25"
-                >
-                    <p>Figma</p>
-                    <div id="bar6" class="barfiller">
-                        <div class="tipWrap">
-                            <span class="tip"></span>
-                        </div>
-                        <span class="fill" data-percentage="80"></span>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+
         </div>
     </div>
 </section>
-<!--================================
-    SKILLS END
-=================================-->
-
-<!--================================
-    PORTFOLIO START
-=================================-->
 <section class="tf__portfolio mt_120 xs_mt_80" id="projects">
     <div class="container">
         <div class="row">
@@ -425,15 +208,8 @@
                     </h2>
                 </div>
             </div>
-    </div>
+        </div>
 </section>
-<!--================================
-    PORTFOLIO END
-=================================-->
-
-<!--================================
-    TESTIMONIAL START
-=================================-->
 <section class="tf__testimonial pt_115 xs_pt_75">
     <div class="container">
         <div class="row">
@@ -458,7 +234,8 @@
                     <h3>Eleanor pena</h3>
                     <h5>Pazarlama Koordinatörü</h5>
                     <p class="description">
-                        Finansal planlamacılar insanların nasıl finansal destek alabilecekleri konusunda bilgi sahibi olmalarına yardımcı olur.
+                        Finansal planlamacılar insanların nasıl finansal destek alabilecekleri konusunda bilgi sahibi
+                        olmalarına yardımcı olur.
                         yatırım yapın ve tasarruf edin en etkili yol arife planı
                         İnsanlar insanların nasıl olduğu konusunda bilgi sahibi olmalarına yardımcı oluyor.
                     </p>
@@ -482,7 +259,8 @@
                     <h3>Eleanor pena</h3>
                     <h5>Pazarlama Koordinatörü</h5>
                     <p class="description">
-                        Finansal planlamacılar insanların nasıl finansal destek alabilecekleri konusunda bilgi sahibi olmalarına yardımcı olur.
+                        Finansal planlamacılar insanların nasıl finansal destek alabilecekleri konusunda bilgi sahibi
+                        olmalarına yardımcı olur.
                         yatırım yapın ve tasarruf edin en etkili yol arife planı
                         İnsanlar insanların nasıl olduğu konusunda bilgi sahibi olmalarına yardımcı oluyor.
                     </p>
@@ -506,7 +284,8 @@
                     <h3>Eleanor pena</h3>
                     <h5>Pazarlama Koordinatörü</h5>
                     <p class="description">
-                        Finansal planlamacılar insanların nasıl finansal destek alabilecekleri konusunda bilgi sahibi olmalarına yardımcı olur.
+                        Finansal planlamacılar insanların nasıl finansal destek alabilecekleri konusunda bilgi sahibi
+                        olmalarına yardımcı olur.
                         yatırım yapın ve tasarruf edin en etkili yol arife planı
                         İnsanlar insanların nasıl olduğu konusunda bilgi sahibi olmalarına yardımcı oluyor.
                     </p>
@@ -515,13 +294,6 @@
         </div>
     </div>
 </section>
-<!--================================
-    TESTIMONIAL END
-=================================-->
-
-<!--================================
-    BRAND START
-=================================-->
 <div class="tf__brand mt_120 xs_mt_80">
     <div class="row">
         <div class="col-12">
@@ -537,13 +309,6 @@
         </div>
     </div>
 </div>
-<!--================================
-    BRAND END
-=================================-->
-
-<!--================================
-    BLOG START
-=================================-->
 <section class="tf__blog pt_125 xs_pt_75 pb_40 xs_pb_0" id="blogs">
     <div class="container">
         <div class="row">
@@ -557,90 +322,36 @@
             </div>
         </div>
         <div class="row">
+            {% for blog in blog_list %}
             <div class="col-xl-4 col-md-6">
                 <div class="tf__slingle_blog fade_left" data-trigerId="blogs">
-                    <a
-                            href="blog_details.html"
-                            class="tf__blog_img"
-                            data-cursor="read <br> more"
-                    >
+                    <a href="{% url "blog:blog-detail" blog.slug %}" class="tf__blog_img" data-cursor="read <br> more">
+                        <img src="{{ blog.image.url }}" alt="{{ blog.slug }}" class="img-flid w-100">
                     </a>
                     <div class="tf__blog_text">
-                        <span>31 December,2022</span>
+                        <span>{{ blog.date }}</span>
                         <ul>
                             <li>
-                                <i class="fa-sharp fa-solid fa-circle-user"></i> By admin
+                                <i class="fa-sharp fa-solid fa-circle-user"></i>
+                                {{ blog.user.username}}
                             </li>
                             <li>
-                                <i class="fa-sharp fa-solid fa-comments"></i> Comments (05)
+                                <i class="fa-sharp fa-solid fa-comments"></i>
+                                {% trans "Yorumlar" %} ({{ blog.comment_count }})
                             </li>
                         </ul>
-                        <a href="blog_details.html"
-                        >Standart kişisel Portfolyom</a
-                        >
+                        <a href="{% url "blog:blog-detail" blog.slug %}">{{ blog.text }}</a>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="tf__slingle_blog fade_left" data-trigerId="blogs">
-                    <a
-                            href="blog_details.html"
-                            class="tf__blog_img"
-                            data-cursor="read <br> more"
-                    >
-                    </a>
-                    <div class="tf__blog_text">
-                        <span>31 December,2022</span>
-                        <ul>
-                            <li>
-                                <i class="fa-sharp fa-solid fa-circle-user"></i> By admin
-                            </li>
-                            <li>
-                                <i class="fa-sharp fa-solid fa-comments"></i> Comments (05)
-                            </li>
-                        </ul>
-                        <a href="blog_details.html"
-                        >Standart kişisel Portfolyom</a
-                        >
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="tf__slingle_blog fade_left" data-trigerId="blogs">
-                    <a
-                            href="blog_details.html"
-                            class="tf__blog_img"
-                            data-cursor="read <br> more"
-                    >
-                    </a>
-                    <div class="tf__blog_text">
-                        <span>31 December,2022</span>
-                        <ul>
-                            <li>
-                                <i class="fa-sharp fa-solid fa-circle-user"></i> By admin
-                            </li>
-                            <li>
-                                <i class="fa-sharp fa-solid fa-comments"></i> Comments (05)
-                            </li>
-                        </ul>
-                        <a href="blog_details.html"
-                        >Standart kişisel Portfolyom</a
-                        >
-                    </div>
-                </div>
-            </div>
+
             <div class="col-12">
-                <a href="blog_list.html" class="common_btn">Daha Fazla Blog +</a>
+                <a href="{% url "blog:blog" %}" class="common_btn">{% trans "Daha Fazla Blog +"%}</a>
             </div>
+            {% endfor %}
         </div>
     </div>
 </section>
-<!--================================
-    BLOG END
-=================================-->
-<!--================================
-    SUBSCRIBE START
-=================================-->
 <div class="tf__subscribe" style="background: url({% static "images/bg/subscribe.jpg" %})">
     <div class="tf__subscribe_overlay pt_115 xs_pt_75 pb_120 xs_pb_80">
         <div class="container">
@@ -649,7 +360,7 @@
                     <div class="tf__subscribe_text">
                         <h3 class="has-animation">{% trans "BÜLTENİME ABONE OLUN" %}</h3>
                         <form action="{% url "contact:subscribe" %}" method="post">
-                        {% csrf_token %}
+                            {% csrf_token %}
                             <input type="email" name="email" placeholder="{% trans "E Posta" %}">
                             <button type="submit" class="common_btn">{% trans "ABONE OL" %}</button>
                         </form>
@@ -659,110 +370,4 @@
         </div>
     </div>
 </div>
-<!--================================
-SUBSCRIBE END
-=================================-->
-
-<!--================================
-    FOOTER START
-=================================-->
-<footer class="footer" id="footer">
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="tf__footer_copyright">
-                            <p>© CodeeFly 2023 | Her hakkı saklıdır</p>
-                            <ul>
-                                <li>
-                                    <a href="#" class="text_hover_animaiton"
-                                    >Tramvaylar ve Durum</a
-                                    >
-                                </li>
-                                <li>
-                                    <a href="#" class="text_hover_animaiton"
-                                    >Gizlilik Politikası</a
-                                    >
-                                </li>
-                                <li>
-                                    <a href="#" class="text_hover_animaiton">Site haritası</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-</footer>
-<!--================================
-FOOTER END
-=================================-->
-<!--================================
-    SCROLL BUTTON START
-=================================-->
-<div class="progress active c-pointer">
-    <svg
-            class="progress-svg"
-            width="100%"
-            height="100%"
-            viewBox="-1 -1 102 102"
-    >
-        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
-    </svg>
-</div>
-<!--================================
-    SCROLL BUTTON END
-=================================-->
-
-<!--================================
-    CURSOR START
-=================================-->
-<div id="magic-cursor">
-    <div id="ball"></div>
-</div>
-<!--================================
-    CURSOR END
-=================================-->
-
-<script src={% static "js/plugin.js" %}></script>
-<!--scroll button js-->
-<script src={% static "js/scroll_button.js" %}></script>
-<!--sticky sidebar js-->
-<script src={% static "js/sticky_sidebar.js" %}></script>
-<!-- Animation -->
-<script src={% static "js/animation.js" %}></script>
-<!--main/custom js-->
-<script src={% static "js/main.js" %}></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-{% if messages %}
-    {% for message in messages %}
-        {% if forloop.last %}
-            <script>
-                Swal.fire({
-                    position: 'center',
-                    icon: '{{ message.tags }}',
-                    title: '{{ message|safe }}',
-                    showConfirmButton: false,
-                    timer: 2500
-                })
-            </script>
-        {% endif %}
-    {% endfor %}
-{% endif %}
-
-{% for error_field, error_message in form.errors.items %}
-    {% if forloop.lasr %}
-        <script>
-            Swal.fire({
-                position: 'center',
-                icon: 'warning',
-                title: '{{ error_message|striptags }}',
-                showConfirmButton: false,
-                timer: 2500
-            })
-        </script>
-    {% endif %}
-{% endfor %}
-
-
-</body>
-</html>
+{% endblock %}

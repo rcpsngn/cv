@@ -1,0 +1,405 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+
+
+{% block content %}
+    <section class="tf__breadcrumb banner" style="background: url(images/bg/breadcrumb.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="tf__breadcrum_text">
+                        <h1>{{ blog_content.text }}</h1>
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <a href="index.html" class="text_hover_animaiton">
+                                    <div style="position:relative;display:inline-block;" class="menu-text">
+                                        <div style="position:relative;display:inline-block;"><font
+                                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">H</font></font>
+                                        </div>
+                                        <div style="position:relative;display:inline-block;"><font
+                                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ö</font></font>
+                                        </div>
+                                        <div style="position:relative;display:inline-block;"><font
+                                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">M</font></font>
+                                        </div>
+                                        <div style="position:relative;display:inline-block;"><font
+                                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">e</font></font>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li><a href="#">{{ blog_content.text }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="tf__blog_details pt_120 xs_pt_80 pb_120 xs_pb_80">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-8">
+                    <div class="tf__blog_details_area">
+                        <div class="tf__blog_details_img">
+                            <img src="{{ blog_content.image.url }}" alt="Blog" class="img-fluid w-100">
+                        </div>
+                        <ul class="blog_details_header">
+                            <li>{{ blog_content.user.username }}
+                            <li><span>Standart</span>
+                            </li>
+                        </ul>
+                        <div class="tf__blog_details_text">
+                            <h2 class="has-animation" style="">
+                                {{ blog.content.text }}
+                            </h2>
+                            {{ blog_content.content|safe }}
+
+                        </div>
+                        <div class="details_blog_share">
+                            <h4>Recep</h4>
+                            <div class="share_icon">
+                                <ul class="social_share d-flex flex-wrap">
+                                    <li>
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fab fa-behance"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                    </li>
+                                </ul>
+                                <ul class="tags d-flex flex-wrap">
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">İç mekan</font></font></a></li>
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">Kullanıcı deneyimi
+                                        tasarımı</font></font></a></li>
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">Grafik</font></font></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <ul class="next_prev_button">
+                            <li class="previous_post">
+                                <a href="#" data-cursor="Previous <br> post">
+                                    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Önceki
+                                        yazı</font></font></p>
+                                    <h5><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Yeni
+                                        Arabalarınızın Performansı</font></font></h5>
+                                </a>
+                            </li>
+                            <li class="next_post">
+                                <a href="#" data-cursor="next <br> post">
+                                    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sonraki
+                                        Gönderi</font></font></p>
+                                    <h5><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">standart
+                                        ve benzeri değerde</font></font></h5>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tf__details_bloger">
+                            <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Stanio
+                                lainto</font></font></h3>
+                            <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">16 Eylül 2023</font></font></span>
+                            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                Bir okuyucunun kontrolden çıkacağı gerçeği, bir okuyucunun kontrolden çıkacağı
+                                gerçeğiyle harekete geçirildi Aliquam, bir okuyucunun kontrolden çıkacağı gerçeği.
+                            </font></font></p>
+                            <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cevap
+                                vermek</font></font></a>
+                            <div class="img">
+                                <img src="images/testimonial/1.jpg" alt="blog yazarı" class="img-fluid w-100">
+                            </div>
+                        </div>
+                        <div class="tf__input_comment mt_90">
+                            <h2 class="has-animation" style="">
+                                <div class="anim_line" style="display: block; text-align: start; position: relative;">
+                                    <div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 100%);"
+                                         class="anim_char"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">L</font></font></div>
+                                    <div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 100%);"
+                                         class="anim_char"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">e</font></font></div>
+                                    <div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 100%);"
+                                         class="anim_char"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">A</font></font></div>
+                                    <div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 100%);"
+                                         class="anim_char"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">v</font></font></div>
+                                    <div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 100%);"
+                                         class="anim_char"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">e</font></font></div>
+                                    <div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 100%);"
+                                         class="anim_char"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">A</font></font></div>
+                                    <div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 100%);"
+                                         class="anim_char"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">C</font></font></div>
+                                    <div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 100%);"
+                                         class="anim_char"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">Ö</font></font></div>
+                                    <div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 100%);"
+                                         class="anim_char"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">M</font></font></div>
+                                    <div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 100%);"
+                                         class="anim_char"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">M</font></font></div>
+                                    <div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 100%);"
+                                         class="anim_char"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">e</font></font></div>
+                                    <div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 100%);"
+                                         class="anim_char"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">N</font></font></div>
+                                    <div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(0px, 100%);"
+                                         class="anim_char"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">T</font></font></div>
+                                </div>
+                            </h2>
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-xl-6">
+                                        <input type="text" placeholder="Adınız">
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <input type="text" placeholder="E-posta adresiniz">
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <textarea rows="6" placeholder="Mesajını buraya yaz"></textarea>
+                                        <button class="common_btn" type="submit"><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">
+                                            Şimdi yorum yaz
+                                        </font></font></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4">
+                    <div class="tf__sidebar">
+                        <div class="tf__sidebar_item tf__sidebar_search">
+                            <h3><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">Aramak</font></font></h3>
+                            <form action="#">
+                                <input type="text" placeholder="Blogunuzda arama yapın">
+                                <button type="submit">
+                                    <i class="fa-regular fa-magnifying-glass"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="tf__sidebar_item tf__sidebar_category mt_30">
+                            <h3><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">Kategori</font></font></h3>
+                            <ul>
+                                <li>
+                                    <a href="blog_details.html"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">İş Tavsiyesi</font></font><span><font
+                                            style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">(02)</font></font></span></a>
+                                </li>
+                                <li>
+                                    <a href="blog_details.html"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">Web tasarımı</font></font><span><font
+                                            style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">(05)</font></font></span></a>
+                                </li>
+                                <li>
+                                    <a href="blog_details.html"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">gelişme</font></font><span><font
+                                            style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">(10)</font></font></span></a>
+                                </li>
+                                <li>
+                                    <a href="blog_details.html"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">Video tanıtımı</font></font><span><font
+                                            style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">(03)</font></font></span></a>
+                                </li>
+                                <li>
+                                    <a href="blog_details.html"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">Reabervede</font></font><span><font
+                                            style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">(10)</font></font></span></a>
+                                </li>
+                                <li>
+                                    <a href="blog_details.html"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">Kullanıcı arayüzü/Ux tasarımı</font></font><span><font
+                                            style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">(03)</font></font></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tf__sidebar_item tf__sidebar_comments mt_30">
+                            <h3><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">Yorumlar</font></font></h3>
+                            <ul>
+                                <li>
+                                    <div class="img">
+                                        <img src="images/blog/comment_1.jpg" alt="Yorum" class="img-fluid w-100">
+                                    </div>
+                                    <div class="text">
+                                        <a href="blog_details.html"><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">Aliquam Eros Justo Posuere Loborti
+                                            Per</font></font></a>
+                                        <p><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">kaydeden Arham Saklia</font></font></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="img">
+                                        <img src="images/blog/comment_2.jpg" alt="Yorum" class="img-fluid w-100">
+                                    </div>
+                                    <div class="text">
+                                        <a href="blog_details.html"><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">Aliquam Eros Justo Posuere Loborti
+                                            Per</font></font></a>
+                                        <p><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">kaydeden Arham Saklia</font></font></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="img">
+                                        <img src="images/blog/comment_3.jpg" alt="Yorum" class="img-fluid w-100">
+                                    </div>
+                                    <div class="text">
+                                        <a href="blog_details.html"><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">Aliquam Eros Justo Posuere Loborti
+                                            Per</font></font></a>
+                                        <p><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">kaydeden Arham Saklia</font></font></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tf__sidebar_item tf__sidebar_gallery mt_30 gallery_popup">
+                            <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fotoğraf
+                                Galerisi</font></font></h3>
+                            <ul>
+                                <li>
+                                    <a href="images/sidebar/1.jpg">
+                                        <img src="images/sidebar/1.jpg" alt="galeri1" class="img-fluid w-100">
+                                        <div class="gal_img_overlay">
+                                            <i class="fa-sharp fa-solid fa-eye"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="images/sidebar/2.jpg">
+                                        <img src="images/sidebar/2.jpg" alt="galeri1" class="img-fluid w-100">
+                                        <div class="gal_img_overlay">
+                                            <i class="fa-sharp fa-solid fa-eye"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="images/sidebar/3.jpg">
+                                        <img src="images/sidebar/3.jpg" alt="galeri1" class="img-fluid w-100">
+                                        <div class="gal_img_overlay">
+                                            <i class="fa-sharp fa-solid fa-eye"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="images/sidebar/4.jpg">
+                                        <img src="images/sidebar/4.jpg" alt="galeri1" class="img-fluid w-100">
+                                        <div class="gal_img_overlay">
+                                            <i class="fa-sharp fa-solid fa-eye"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="images/sidebar/5.jpg">
+                                        <img src="images/sidebar/5.jpg" alt="galeri1" class="img-fluid w-100">
+                                        <div class="gal_img_overlay">
+                                            <i class="fa-sharp fa-solid fa-eye"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="images/sidebar/6.jpg">
+                                        <img src="images/sidebar/6.jpg" alt="galeri1" class="img-fluid w-100">
+                                        <div class="gal_img_overlay">
+                                            <i class="fa-sharp fa-solid fa-eye"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="images/sidebar/7.jpg">
+                                        <img src="images/sidebar/7.jpg" alt="galeri1" class="img-fluid w-100">
+                                        <div class="gal_img_overlay">
+                                            <i class="fa-sharp fa-solid fa-eye"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="images/sidebar/8.jpg">
+                                        <img src="images/sidebar/8.jpg" alt="galeri1" class="img-fluid w-100">
+                                        <div class="gal_img_overlay">
+                                            <i class="fa-sharp fa-solid fa-eye"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="images/sidebar/9.jpg">
+                                        <img src="images/sidebar/9.jpg" alt="galeri1" class="img-fluid w-100">
+                                        <div class="gal_img_overlay">
+                                            <i class="fa-sharp fa-solid fa-eye"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tf__sidebar_item tf__sidebar_tags mt_30">
+                            <h3><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">Etiketler</font></font></h3>
+                            <ul>
+                                <li>
+                                    <a href="#"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">Web tasarımı</font></font></a>
+                                </li>
+                                <li>
+                                    <a href="#"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">Mimar</font></font></a>
+                                </li>
+                                <li>
+                                    <a href="#"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">Ev</font></font></a>
+                                </li>
+                                <li>
+                                    <a href="#"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">İç mekan</font></font></a>
+                                </li>
+                                <li>
+                                    <a href="#"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">Grafik</font></font></a>
+                                </li>
+                                <li>
+                                    <a href="#"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">Şidtarx</font></font></a>
+                                </li>
+                                <li>
+                                    <a href="#"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">Şekli başlat</font></font></a>
+                                </li>
+                                <li>
+                                    <a href="#"><font style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">Kullanıcı arayüzü/UX</font></font></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

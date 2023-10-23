@@ -330,31 +330,6 @@ function(_0x504c0a) {
                 });
             });
         },
-        'progressbar'() {
-            const _0x2a0d7e = _0xbf473e;
-            var _0x3d11d8 = _0x504c0a('.tf__team_skills_bar_single\x20.fill');
-            _0x3d11d8[_0x2a0d7e(0x1d0)](function() {
-                const _0x1a903f = _0x2a0d7e
-                  , _0x4b396d = _0x3d11d8[_0x1a903f(0x1d1)](_0x1a903f(0x17e));
-                gsap['fromTo'](_0x3d11d8, {
-                    'css': {
-                        'width': 0x0
-                    }
-                }, {
-                    'scrollTrigger': {
-                        'trigger': _0x504c0a(this)['parent'](_0x1a903f(0x171)),
-                        'start': _0x1a903f(0x1c5),
-                        'toggleActions': _0x1a903f(0x1bd)
-                    },
-                    'css': {
-                        'width': _0x4b396d + '%'
-                    },
-                    'duration': 0.8,
-                    'stagger': 0.01,
-                    'ease': 'power2.out'
-                });
-            });
-        },
         'parallaxie'() {
             const _0x31d6b1 = _0xbf473e;
             _0x504c0a(_0x31d6b1(0x1d7))[_0x31d6b1(0x188)]({

@@ -11,6 +11,7 @@ urlpatterns = i18n_patterns(
     path('', include(('apps.main.mainpage.urls'), namespace='mainpage')),
     path('contact/', include(('apps.main.contact.urls'), namespace='contact')),
     path('reference/', include(('apps.main.reference.urls'), namespace='reference')),
+    path('blog/', include(('apps.main.blog.urls'), namespace='blog')),
     path('super/user/admin', admin.site.urls),
     path('rosetta/lang/trans/', include('rosetta.urls')),
     path('i18n/', include('django.conf.urls.i18n'))

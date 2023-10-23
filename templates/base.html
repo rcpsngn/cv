@@ -1,0 +1,84 @@
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi"
+    >
+    <title>ZYAN - Personal Portfolio HTML Templates</title>
+    <link rel="icon" type="image/png" href={% static "images/favicon.png" %}>
+    <link rel="stylesheet" href={% static "css/font-awesome-pro.css" %}>
+    <link rel="stylesheet" href={% static "css/bootstrap.min.css" %}>
+    <link rel="stylesheet" href={% static "css/scroll_button.css" %}>
+    <link rel="stylesheet" href={% static "css/plugin.css" %}>
+    <link rel="stylesheet" href={% static "css/spacing.css" %}>
+    <link rel="stylesheet" href={% static "css/style.css" %}>
+    <link rel="stylesheet" href={% static "css/responsive.css" %}>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
+</head>
+
+<body>
+
+
+{% block header %}
+    {% include 'partials/header.html' %}
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'partials/footer.html' %}
+{% endblock %}
+
+
+<script src={% static "js/plugin.js" %}></script>
+<!--scroll button js-->
+<script src={% static "js/scroll_button.js" %}></script>
+<!--sticky sidebar js-->
+<script src={% static "js/sticky_sidebar.js" %}></script>
+<!-- Animation -->
+<script src={% static "js/animation.js" %}></script>
+<!--main/custom js-->
+<script src={% static "js/main.js" %}></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% if messages %}
+    {% for message in messages %}
+        {% if forloop.last %}
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: '{{ message.tags }}',
+                    title: '{{ message|safe }}',
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% for error_field, error_message in form.errors.items %}
+    {% if forloop.lasr %}
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: '{{ error_message|striptags }}',
+                showConfirmButton: false,
+                timer: 2500
+            })
+        </script>
+    {% endif %}
+{% endfor %}
+
+
+</body>
+</html>

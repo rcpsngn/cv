@@ -45,6 +45,8 @@ APPS = [
     'apps.main.reference',
     'apps.main.library',
     'apps.main.contact',
+    'apps.main.about',
+    'apps.main.blog',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + APPS

@@ -1,0 +1,40 @@
+{% load i18n %}
+{% load static %}
+
+<div class="preloader">
+    <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path id="" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+    </svg>
+    <h5 class="preloader-text">{% trans "Yükleniyor" %}</h5>
+</div>
+<nav class="navbar navbar-expand-lg main_menu">
+    <div class="container main_menu_bg">
+        <a class="navbar-brand" href="index.html">
+            <img src="{{ site_settings.logo.url }}" alt="ZYAN" class="img-fluid w-100">
+        </a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <i class="fa-sharp fa-regular fa-bars bar_icon"></i>
+            <i class="fa-regular fa-xmark close_icon"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav m-auto">
+                {% for menu in header_menu %}
+                    <li class="nav-item">
+                        <a class="nav-link text_hover_animaiton active" href="{{ menu.url }}">
+                            {{ menu.text }}
+                        </a>
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+</nav>
