@@ -3,6 +3,7 @@ from django.db import models
 class Settings(models.Model):
     text = models.CharField(blank=True, max_length=200, verbose_name="Site Başlığı", null=True)
     logo = models.ImageField(upload_to="İmage", null=True, blank=True, verbose_name='logo')
+    default_profile_image = models.ImageField(upload_to="İmage", null=True, blank=True, verbose_name='Default Profil Resmi')
 
     def __str__(self):
         return str(self.text)
