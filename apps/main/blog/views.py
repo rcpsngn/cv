@@ -5,7 +5,10 @@ from apps.main.blog.models import Blog, BlogCategory, BlogComment
 
 
 def blog(request):
-    context = {}
+    blog_list = Blog.objects.filter()
+    context = {
+        'blog_list': blog_list,
+    }
     return render(request, "apps/blog/blog.html", context)
 
 

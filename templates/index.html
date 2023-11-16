@@ -6,7 +6,7 @@
 
 
 {% block content %}
-    <section class="tf__banner banner" style="background: ">
+    <section id="about" class="tf__banner banner" style="background:url()">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-xl-6 col-lg-8">
@@ -16,9 +16,9 @@
                             <span class="cd-headline rotate-1">
                   <!-- ANIMATE TEXT VALUES: zoom, rotate-1, letters type, letters rotate-2, loading-bar, slide, clip, letters rotate-3, letters scale, push,  -->
                   <span class="cd-words-wrapper">
-                    <b class="is-visible">ŞENGÜN</b>
-                    <b>İstanbul</b>
-                    <b>Yazılım Öğreniyorum</b>
+                    {% for item in main_page.slayt_skill.all %}
+                        <b {% if forloop.first %}class="is-visible"{% endif %}>{{ item.text }}</b>
+                    {% endfor %}
                   </span>
                 </span>
                         </h1>
@@ -28,13 +28,6 @@
                                 <a class="common_btn" href="#"
                                 >İndir Cv <i class="fa-solid fa-arrow-down-to-line"></i
                                 ></a>
-                            </li>
-                            <li>
-                                <a
-                                        class="banner_video_btn play_btn"
-                                        href="https://www.youtube.com/watch?v=B-ytMSuwbf8"
-                                ><i class="fa-sharp fa-solid fa-circle-play"></i> Kendimi Tanıttığım Video</a
-                                >
                             </li>
                         </ul>
                     </div>
@@ -61,7 +54,7 @@
                         <h5 class="has-animation">{% trans "HİZMETLERİM" %}</h5>
                         <h2 class="has-animation">
                             {% blocktrans %}Aracılığıyla Hikayeler Oluşturmak, <br>
-                            Tasarım ve Yenilik{% endblocktrans %}
+                                Tasarım ve Yenilik{% endblocktrans %}
                         </h2>
                     </div>
                 </div>
@@ -84,40 +77,27 @@
 
         </div>
     </section>
-    <section class="tf__design mt_135 xs_mt_40 mb_120 xs_mb_80" id="counter">
+    <section class="tf__design mt_135 xs_mt_40 mb_120 xs_mb_80" id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-6">
                     <div class="tf__design_text">
-                        <h2>Tasarım <span>ve İnovasyon</span></h2>
-                        <p class="">
-                            Türkçeye Yenilik olarak geçen İnnovation, bir değişim sürecini çağrıştırıyor
-                            olsada ona sadece Değişim veya Yenilik demek haksızlık olacaktır.
-                            İnovasyon hammaddesi bilgi ve yaratıcılık olan , iyileştiren, güçlendiren ve
-                            rekabet şansını arttıran sistematik bir “Yenilik Tasarım Sürecidir”
-                        </p>
+                        <h2>{{ main_page.contact_text|safe }}</h2>
+                        {{ main_page.contact_content|safe }}
                     </div>
                     <div class="row">
+                        {% for item in main_page.contact_counter.all %}
                         <div class="col-xl-6 col-md-6">
                             <div
-                                    class="tf__design_counter fade_left"
+                                    class="tf__design_counter"
                                     data-trigerId="counter"
                             >
 
-                                <h3><span class="counter">10</span>k+</h3>
-                                <p>Proje Tamamla</p>
+                                <h3><span class="counter">{{ item.count }}</span>{{ item.oid }}</h3>
+                                <p>{{ item.text }}</p>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-md-6">
-                            <div
-                                    class="tf__design_counter fade_left"
-                                    data-trigerId="counter"
-                            >
-
-                                <h3><span class="counter">800</span>+</h3>
-                                <p>Müşteri İncelemesi</p>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6">
@@ -148,7 +128,7 @@
                         <h5 class="has-animation">{% trans "Eğitim ve Beceri" %}</h5>
                         <h2 class="has-animation">
                             {% blocktrans %}Yeteneğinizi sergiliyoruz <br>
-                            etkinizi güçlendirmek için{% endblocktrans %}
+                                etkinizi güçlendirmek için{% endblocktrans %}
                         </h2>
                     </div>
                 </div>
@@ -190,107 +170,6 @@
                     </div>
                 {% endfor %}
 
-            </div>
-        </div>
-    </section>
-    <section class="tf__portfolio mt_120 xs_mt_80" id="projects">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-10 col-lg-9 mb_30">
-                    <div class="tf__section_heading">
-                        <h5 class="has-animation">son portföyüm</h5>
-                        <h2 class="has-animation">
-                            Markanızı yeniliğe taşıyın <br>
-                            portföy uzmanlığımızla zirvelere
-                        </h2>
-                    </div>
-                </div>
-            </div>
-    </section>
-    <section class="tf__testimonial pt_115 xs_pt_75">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-8 m-auto mb_30">
-                    <div class="tf__section_heading">
-                        <h5 class="has-animation">{% trans "Müşteri İncelemesi" %}</h5>
-                        <h2 class="has-animation">{% trans "Refaransım" %}</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row testi_slider">
-                <div class="col-xl-6">
-                    <div class="tf__single_testimonial">
-
-                        <p class="rating">
-                            <i class="fa-solid fa-star-sharp"></i>
-                            <i class="fa-solid fa-star-sharp"></i>
-                            <i class="fa-solid fa-star-sharp"></i>
-                            <i class="fa-solid fa-star-sharp"></i>
-                            <i class="fa-solid fa-star-sharp"></i>
-                        </p>
-                        <h3>Eleanor pena</h3>
-                        <h5>Pazarlama Koordinatörü</h5>
-                        <p class="description">
-                            Finansal planlamacılar insanların nasıl finansal destek alabilecekleri konusunda bilgi
-                            sahibi
-                            olmalarına yardımcı olur.
-                            yatırım yapın ve tasarruf edin en etkili yol arife planı
-                            İnsanlar insanların nasıl olduğu konusunda bilgi sahibi olmalarına yardımcı oluyor.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="tf__single_testimonial">
-                        <div class="img">
-                            <img
-                                    src="images/testimonial/2.jpg"
-                                    alt="clients"
-                                    class="img-fluid w-100">
-                        </div>
-                        <p class="rating">
-                            <i class="fa-solid fa-star-sharp"></i>
-                            <i class="fa-solid fa-star-sharp"></i>
-                            <i class="fa-solid fa-star-sharp"></i>
-                            <i class="fa-solid fa-star-sharp"></i>
-                            <i class="fa-solid fa-star-sharp"></i>
-                        </p>
-                        <h3>Eleanor pena</h3>
-                        <h5>Pazarlama Koordinatörü</h5>
-                        <p class="description">
-                            Finansal planlamacılar insanların nasıl finansal destek alabilecekleri konusunda bilgi
-                            sahibi
-                            olmalarına yardımcı olur.
-                            yatırım yapın ve tasarruf edin en etkili yol arife planı
-                            İnsanlar insanların nasıl olduğu konusunda bilgi sahibi olmalarına yardımcı oluyor.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="tf__single_testimonial">
-                        <div class="img">
-                            <img
-                                    src="images/testimonial/1.jpg"
-                                    alt="clients"
-                                    class="img-fluid w-100">
-                        </div>
-                        <p class="rating">
-                            <i class="fa-solid fa-star-sharp"></i>
-                            <i class="fa-solid fa-star-sharp"></i>
-                            <i class="fa-solid fa-star-sharp"></i>
-                            <i class="fa-solid fa-star-sharp"></i>
-                            <i class="fa-solid fa-star-sharp"></i>
-                        </p>
-                        <h3>Eleanor pena</h3>
-                        <h5>Pazarlama Koordinatörü</h5>
-                        <p class="description">
-                            Finansal planlamacılar insanların nasıl finansal destek alabilecekleri konusunda bilgi
-                            sahibi
-                            olmalarına yardımcı olur.
-                            yatırım yapın ve tasarruf edin en etkili yol arife planı
-                            İnsanlar insanların nasıl olduğu konusunda bilgi sahibi olmalarına yardımcı oluyor.
-                        </p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

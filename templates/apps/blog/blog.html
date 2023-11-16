@@ -6,24 +6,45 @@
 
 
 {% block content %}
-    <section class="tf__breadcrumb banner" style="background: url({% static "images/bg/breadcrumb.jpg" %})">
+    <section class="tf__blog pt_125 xs_pt_75 pb_40 xs_pb_0" id="blogs">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <div class="tf__breadcrum_text">
-                        <h1>{{ blog_content.text }}</h1>
-                        <ul class="page-breadcrumb">
-                            <li>
-                                <a href="/" class="text_hover_animaiton">
-                                    <div style="position:relative;display:inline-block;" class="menu-text">
-                                        {% trans "Ana Sayfa" %}
-                                    </div>
-                                </a>
-                            </li>
-                            <li><a href="#">{{ blog_content.text }}</a></li>
-                        </ul>
+                <div class="col-xl-8 col-lg-9 mb_30">
+                    <div class="tf__section_heading">
+                        <h5 class="has-animation">{% trans "Bloğum" %}</h5>
+                        <h2 class="has-animation">
+                            {% trans "Kişisel Markanızın Potansiyelinin Kilidini Açmak" %}
+                        </h2>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                {% for blog in blog_list %}
+                    <div class="col-xl-4 col-md-6">
+                        <div class="tf__slingle_blog fade_left" data-trigerId="blogs">
+                            <a href="{% url "blog:blog-detail" blog.slug %}" class="tf__blog_img"
+                               data-cursor="read <br> more">
+                                <img src="{{ blog.image.url }}" alt="{{ blog.slug }}" class="img-flid w-100">
+                            </a>
+                            <div class="tf__blog_text">
+                                <span>{{ blog.date }}</span>
+                                <ul>
+                                    <li>
+                                        <i class="fa-sharp fa-solid fa-circle-user"></i>
+                                        {{ blog.user.username }}
+                                    </li>
+                                    <li>
+                                        <i class="fa-sharp fa-solid fa-comments"></i>
+                                        {% trans "Yorumlar" %} ({{ blog.comment_count }})
+                                    </li>
+                                </ul>
+                                <a href="{% url "blog:blog-detail" blog.slug %}">{{ blog.text }}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
             </div>
         </div>
     </section>

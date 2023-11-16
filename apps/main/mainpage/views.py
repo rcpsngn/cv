@@ -1,4 +1,5 @@
 from django.db.backends.ddl_references import Reference
+from django.db.models import Q
 from django.shortcuts import render
 
 from apps.main.about.models import Career, Skills
@@ -13,7 +14,7 @@ def index(request):
     services = Services.objects.filter()
     refereces = References.objects.all()
     career_list = Career.objects.all()
-    skill_list = Skills.objects.all()
+    skill_list = Skills.objects.filter(~Q(count=0))
     blog_list = Blog.objects.all()
     context = {
         'main_page': main_page,
